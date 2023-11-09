@@ -17,25 +17,17 @@
 Créer une base de données PostgreSQL : Utilise psql ou pgAdmin pour exécuter ces commandes SQL et créer la base de données et l'utilisateur :
 
 sql
-
-Copy code
-
 CREATE DATABASE mydatabase;
-
 CREATE USER user WITH PASSWORD 'password';
-
 ALTER ROLE user SET client_encoding TO 'utf8';
-
 ALTER ROLE user SET default_transaction_isolation TO 'read committed';
-
 ALTER ROLE user SET timezone TO 'UTC';
-
 GRANT ALL PRIVILEGES ON DATABASE mydatabase TO user;
 
-Mettre à jour les informations de connexion dans le script : Ouvre le script Python et mets à jour la variable PG_CONFIG :
+ - Mettre à jour les informations de connexion dans le script : Ouvre le script Python et mets à jour la variable PG_CONFIG :
 
 python
-Copy code
+
 PG_CONFIG = "host=localhost port=5432 dbname=mydatabase user=user password=password"
 
 # - Configuration de Redis
