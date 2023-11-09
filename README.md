@@ -8,16 +8,17 @@
 
 - **Installer PostgreSQL :** Télécharge et installe PostgreSQL depuis [le site officiel de PostgreSQL](https://www.postgresql.org/download/).
 
-- **Installer les dépendances Python :** Dans le répertoire du script, exécute la commande suivante pour installer les dépendances nécessaires :
-  ```bash
+- **Installer les dépendances Python :**
+  -  Dans le répertoire du script, exécute la commande suivante pour installer les dépendances nécessaires :
+--bash
   pip install paramiko requests aiopg uvicorn rapidjson
   
 ## - Configuration de PostGreSQL
 
 Créer une base de données PostgreSQL : Utilise psql ou pgAdmin pour exécuter ces commandes SQL et créer la base de données et l'utilisateur :
 
-sql
-CREATE DATABASE mydatabase;
+--sql
+CREATE DATABASE mydatabase;                                    
 CREATE USER user WITH PASSWORD 'password';
 ALTER ROLE user SET client_encoding TO 'utf8';
 ALTER ROLE user SET default_transaction_isolation TO 'read committed';
@@ -26,8 +27,7 @@ GRANT ALL PRIVILEGES ON DATABASE mydatabase TO user;
 
  - Mettre à jour les informations de connexion dans le script : Ouvre le script Python et mets à jour la variable PG_CONFIG :
 
-python
-
+--python
 PG_CONFIG = "host=localhost port=5432 dbname=mydatabase user=user password=password"
 
 # - Configuration de Redis
@@ -37,23 +37,23 @@ Installer et configurer Redis (si nécessaire) : Télécharge et installe Redis 
 # - Gestion des clés SSH
 
 Générer une paire de clés SSH : Génère une paire de clés avec la commande :
-bash
-Copy code
+
+--bash
 ssh-keygen -t rsa -f server.key
 
 # - Configuration de l'environnement
 
 Configurer les variables d'environnement pour Redis (si nécessaire) : Dans le terminal :
 
-bash
+--bash
 Copy code
 export REDIS_HOST=127.0.0.1
 export REDIS_PORT=6379
 export REDIS_PASSWORD=ton_mot_de_passe_redis
 Ou dans PowerShell sur Windows :
 
-powershell
-Copy code
+--powershell
+
 $env:REDIS_HOST="127.0.0.1"
 $env:REDIS_PORT="6379"
 $env:REDIS_PASSWORD="ton_mot_de_passe_redis"
@@ -62,8 +62,8 @@ $env:REDIS_PASSWORD="ton_mot_de_passe_redis"
 
 Exécuter le script : Dans le terminal, place-toi dans le répertoire du script et lance-le :
 
-bash
-Copy code
+--bash
+
 python nom_du_script.py
 Vérifier le fonctionnement : Consulte les journaux (combined_honeypot.log) pour des informations sur les connexions et les activités.
 
