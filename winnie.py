@@ -20,6 +20,7 @@ from paramiko.py3compat import b, u, decodebytes
 import rapidjson
 import uvicorn
 import aiopg
+from ssh_server import start_ssh_server
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -33,6 +34,9 @@ REDIS_HOST=os.environ.get("REDIS_HOST")
 REDIS_PORT=os.environ.get("REDIS_PORT")
 REDIS_PASSWORD=os.environ.get("REDIS_PASSWORD")
 r = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASSWORD, decode_responses=True)
+
+# Configuration PostgreSQL
+PG_CONFIG = "host=localhost port=5432 dbname=mydatabase user=user password=password"
 
 HOST_KEY = paramiko.RSAKey(filename='server.key')
 SSH_BANNER = "SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.1"
