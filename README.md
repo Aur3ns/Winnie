@@ -11,7 +11,9 @@
 - **Installer les dépendances Python :** Dans le répertoire du script, exécute la commande suivante pour installer les dépendances nécessaires :
   ```bash
   pip install paramiko requests aiopg uvicorn rapidjson
-Configuration de PostgreSQL
+  
+## Configuration de PostGreSQL
+
 Créer une base de données PostgreSQL : Utilise psql ou pgAdmin pour exécuter ces commandes SQL et créer la base de données et l'utilisateur :
 
 sql
