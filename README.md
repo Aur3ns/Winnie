@@ -2,7 +2,7 @@
 
 # Honeypot SSH avec Téléchargement d'URL
 
-## Prérequis
+## - Prérequis
 
 - **Installer Python :** Assure-toi d'avoir [Python](https://www.python.org/downloads/) installé sur ton système.
 
@@ -12,7 +12,7 @@
   ```bash
   pip install paramiko requests aiopg uvicorn rapidjson
   
-## Configuration de PostGreSQL
+## - Configuration de PostGreSQL
 
 Créer une base de données PostgreSQL : Utilise psql ou pgAdmin pour exécuter ces commandes SQL et créer la base de données et l'utilisateur :
 
@@ -29,14 +29,20 @@ Mettre à jour les informations de connexion dans le script : Ouvre le script Py
 python
 Copy code
 PG_CONFIG = "host=localhost port=5432 dbname=mydatabase user=user password=password"
-Configuration de Redis
+
+# - Configuration de Redis
+
 Installer et configurer Redis (si nécessaire) : Télécharge et installe Redis depuis le site officiel de Redis. Démarre le serveur Redis.
-Gestion des clés SSH
+
+# - Gestion des clés SSH
+
 Générer une paire de clés SSH : Génère une paire de clés avec la commande :
 bash
 Copy code
 ssh-keygen -t rsa -f server.key
-Configuration de l'environnement
+
+# - Configuration de l'environnement
+
 Configurer les variables d'environnement pour Redis (si nécessaire) : Dans le terminal :
 
 bash
@@ -51,7 +57,9 @@ Copy code
 $env:REDIS_HOST="127.0.0.1"
 $env:REDIS_PORT="6379"
 $env:REDIS_PASSWORD="ton_mot_de_passe_redis"
-Exécution du script
+
+# - Exécution du script
+
 Exécuter le script : Dans le terminal, place-toi dans le répertoire du script et lance-le :
 
 bash
