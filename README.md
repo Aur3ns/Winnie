@@ -41,6 +41,16 @@ Générer une paire de clés SSH : Génère une paire de clés avec la commande 
 --bash
 ssh-keygen -t rsa -f server.key
 
+# - Build
+
+--bash
+docker build -t winnie .
+
+# - Run
+
+--bash
+docker run -v ${PWD}:/usr/src/app -p 2222:2222 basic_honeypot
+
 # - Configuration de l'environnement
 
 Configurer les variables d'environnement pour Redis (si nécessaire) : Dans le terminal :
