@@ -1,10 +1,22 @@
+# Utiliser une image Python officielle comme base
 FROM python:3.9
 
+# Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
+# Copier les fichiers nécessaires dans le conteneur
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
-
 COPY . /app
 
-CMD ["python", "winnie.py"]
+# Définir les variables d'environnement pour la connexion à Redis et PostgreSQL
+ENV REDIS_HOST your_redis_host
+ENV REDIS_PORT your_redis_port
+ENV REDIS_PASSWORD your_redis_password
+ENV PG_CONFIG your_pg_config
+
+# Exposer le port sur lequel le serveur SSH écoutera
+EXPOSE 8000
+
+# Lancer le script Python dans le conteneur
+CMD ["python", "winnie.py", "-p", "2222"]
