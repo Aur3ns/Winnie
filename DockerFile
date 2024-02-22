@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app
 
-CMD ["python", "nom_du_script.py"]
+CMD ["python", "winnie.py"]
