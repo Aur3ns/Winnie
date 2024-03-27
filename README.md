@@ -18,6 +18,7 @@
 Créer une base de données PostgreSQL : Utilise psql ou pgAdmin pour exécuter ces commandes SQL et créer la base de données et l'utilisateur :
 
 --sql
+
 CREATE DATABASE mydatabase;                                    
 CREATE USER user WITH PASSWORD 'password';
 ALTER ROLE user SET client_encoding TO 'utf8';
@@ -28,6 +29,7 @@ GRANT ALL PRIVILEGES ON DATABASE mydatabase TO user;
  - Mettre à jour les informations de connexion dans le script : Ouvre le script Python et mets à jour la variable PG_CONFIG :
 
 --python
+
 PG_CONFIG = "host=localhost port=5432 dbname=mydatabase user=user password=password"
 
 # - Configuration de Redis
@@ -39,27 +41,30 @@ Installer et configurer Redis (si nécessaire) : Télécharge et installe Redis 
 Générer une paire de clés SSH : Génère une paire de clés avec la commande :
 
 --bash
+
 ssh-keygen -t rsa -f server.key
 
 # - Build
 
 --bash
+
 docker build -t winnie .
 
 # - Run
 
 --bash
+
 docker run -v ${PWD}:/usr/src/app -p 2222:2222 basic_honeypot
 
 # - Configuration de l'environnement
 
 Configurer les variables d'environnement pour Redis (si nécessaire) : Dans le terminal :
 
---bash
-Copy code
+
 export REDIS_HOST=127.0.0.1
 export REDIS_PORT=6379
 export REDIS_PASSWORD=ton_mot_de_passe_redis
+
 Ou dans PowerShell sur Windows :
 
 --powershell
@@ -83,7 +88,3 @@ Envoyer des URL à télécharger : Ajoute des URL à la file d'attente Redis pou
 
 Arrêter le script : Utilise Ctrl + C dans le terminal où il est en cours d'exécution.
 
-vbnet
-Copy code
-
-N'oublie pas de personnaliser les sections avec les valeurs spécifiques à ton environnement.
