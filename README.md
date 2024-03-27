@@ -60,14 +60,11 @@ docker run -v ${PWD}:/usr/src/app -p 2222:2222 basic_honeypot
 
 Configurer les variables d'environnement pour Redis (si nécessaire) : Dans le terminal :
 
-
 export REDIS_HOST=127.0.0.1
 export REDIS_PORT=6379
 export REDIS_PASSWORD=ton_mot_de_passe_redis
 
 Ou dans PowerShell sur Windows :
-
---powershell
 
 $env:REDIS_HOST="127.0.0.1"
 $env:REDIS_PORT="6379"
