@@ -1,87 +1,99 @@
 # HoneyPOT
 
-# Honeypot SSH avec Téléchargement d'URL
+## Honeypot SSH avec Téléchargement d'URL
 
-## - Prérequis
+### Prérequis
 
 - **Installer Python :** Assure-toi d'avoir [Python](https://www.python.org/downloads/) installé sur ton système.
-
-- **Installer PostgreSQL :** Télécharge et installe PostgreSQL depuis [le site officiel de PostgreSQL](https://www.postgresql.org/download/).
-
-- **Installer les dépendances Python :**
-  -  Dans le répertoire du script, exécute la commande suivante pour installer les dépendances nécessaires :
---bash
-  pip install paramiko requests aiopg uvicorn rapidjson
   
-## - Configuration de PostGreSQL
+- **Installer PostgreSQL :** Télécharge et installe PostgreSQL depuis [le site officiel de PostgreSQL](https://www.postgresql.org/download/).
+  
+- **Installer les dépendances Python :**
+  - Dans le répertoire du script, exécute la commande suivante pour installer les dépendances nécessaires :
 
-1. **Créer une base de données PostgreSQL**:
-   - Créer une base de données PostgreSQL : Utilise psql ou pgAdmin pour exécuter ces commandes SQL et créer la base de données et l'utilisateur :
-    ```sql
-CREATE DATABASE mydatabase;                                    
-CREATE USER user WITH PASSWORD 'password';
-ALTER ROLE user SET client_encoding TO 'utf8';
-ALTER ROLE user SET default_transaction_isolation TO 'read committed';
-ALTER ROLE user SET timezone TO 'UTC';
-GRANT ALL PRIVILEGES ON DATABASE mydatabase TO user;
-    ```
-    
-2. **Mettre à jour les informations de connexion dans le script**:
-   -  Ouvre le script Python et mets à jour la variable PG_CONFIG :
-    ```python
-PG_CONFIG = "host=localhost port=5432 dbname=mydatabase user=user password=password"
+    ```bash
+    pip install paramiko requests aiopg uvicorn rapidjson
     ```
 
-# - Configuration de Redis
+### Configuration de PostgreSQL
 
-Installer et configurer Redis (si nécessaire) : Télécharge et installe Redis depuis le site officiel de Redis. Démarre le serveur Redis.
+1. **Créer une base de données PostgreSQL** :
+   - Utilise psql ou pgAdmin pour exécuter ces commandes SQL et créer la base de données et l'utilisateur :
 
-# - Gestion des clés SSH
+     ```sql
+     CREATE DATABASE mydatabase;
+     CREATE USER user WITH PASSWORD 'password';
+     ALTER ROLE user SET client_encoding TO 'utf8';
+     ALTER ROLE user SET default_transaction_isolation TO 'read committed';
+     ALTER ROLE user SET timezone TO 'UTC';
+     GRANT ALL PRIVILEGES ON DATABASE mydatabase TO user;
+     ```
 
-Générer une paire de clés SSH : Génère une paire de clés avec la commande :
+2. **Mettre à jour les informations de connexion dans le script** :
+   - Ouvre le script Python et mets à jour la variable `PG_CONFIG` :
 
---bash
+     ```python
+     PG_CONFIG = "host=localhost port=5432 dbname=mydatabase user=user password=password"
+     ```
 
-ssh-keygen -t rsa -f server.key
+### Configuration de Redis
 
-# - Build
+- **Installer et configurer Redis (si nécessaire)** : Télécharge et installe Redis depuis le site officiel de Redis. Démarre le serveur Redis.
 
---bash
+### Gestion des clés SSH
 
-docker build -t winnie .
+- **Générer une paire de clés SSH** : Génère une paire de clés avec la commande :
 
-# - Run
+    ```bash
+    ssh-keygen -t rsa -f server.key
+    ```
 
---bash
+### Build
 
-docker run -v ${PWD}:/usr/src/app -p 2222:2222 basic_honeypot
+- **Construire l'image Docker** :
 
-# - Configuration de l'environnement
+    ```bash
+    docker build -t winnie .
+    ```
 
-Configurer les variables d'environnement pour Redis (si nécessaire) : Dans le terminal :
+### Run
 
-export REDIS_HOST=127.0.0.1
-export REDIS_PORT=6379
-export REDIS_PASSWORD=ton_mot_de_passe_redis
+- **Lancer le conteneur Docker** :
 
-Ou dans PowerShell sur Windows :
+    ```bash
+    docker run -v ${PWD}:/usr/src/app -p 2222:2222 basic_honeypot
+    ```
 
-$env:REDIS_HOST="127.0.0.1"
-$env:REDIS_PORT="6379"
-$env:REDIS_PASSWORD="ton_mot_de_passe_redis"
+### Configuration de l'environnement
 
-# - Exécution du script
+- **Configurer les variables d'environnement pour Redis (si nécessaire)** : Dans le terminal, exécute les commandes suivantes :
 
-Exécuter le script : Dans le terminal, place-toi dans le répertoire du script et lance-le :
+    ```bash
+    export REDIS_HOST=127.0.0.1
+    export REDIS_PORT=6379
+    export REDIS_PASSWORD=ton_mot_de_passe_redis
+    ```
 
---bash
+  Ou dans PowerShell sur Windows :
 
-python nom_du_script.py
-Vérifier le fonctionnement : Consulte les journaux (combined_honeypot.log) pour des informations sur les connexions et les activités.
+    ```powershell
+    $env:REDIS_HOST="127.0.0.1"
+    $env:REDIS_PORT="6379"
+    $env:REDIS_PASSWORD="ton_mot_de_passe_redis"
+    ```
 
-Tester avec un client SSH : Utilise un client SSH pour te connecter au serveur avec l'adresse IP et le port spécifiés dans le script.
+### Exécution du script
 
-Envoyer des URL à télécharger : Ajoute des URL à la file d'attente Redis pour tester la fonction de téléchargement d'URL.
+- **Exécuter le script** : Dans le terminal, place-toi dans le répertoire du script et lance-le :
 
-Arrêter le script : Utilise Ctrl + C dans le terminal où il est en cours d'exécution.
+    ```bash
+    python nom_du_script.py
+    ```
 
+- **Vérifier le fonctionnement** : Consulte les journaux (`combined_honeypot.log`) pour des informations sur les connexions et les activités.
+
+- **Tester avec un client SSH** : Utilise un client SSH pour te connecter au serveur avec l'adresse IP et le port spécifiés dans le script.
+
+- **Envoyer des URL à télécharger** : Ajoute des URL à la file d'attente Redis pour tester la fonction de téléchargement d'URL.
+
+- **Arrêter le script** : Utilise `Ctrl + C` dans le terminal où il est en cours d'exécution.
