@@ -64,7 +64,9 @@
 
 ### Configuration de l'environnement
 
-- **Configurer les variables d'environnement pour Redis (si nécessaire)** : Dans le terminal, exécute les commandes suivantes :
+- **Configurer les variables d'environnement pour Redis (si nécessaire)**
+  
+  Dans le terminal, exécute les commandes suivantes :
 
     ```bash
     export REDIS_HOST=127.0.0.1
