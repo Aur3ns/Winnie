@@ -1,8 +1,8 @@
-<h1 align="center">Project Winnie</h1>
+<h1 align="center"> 🐻 Project Winnie 🍯 </h1>
 
 ### Honeypot SSH avec Téléchargement d'URL
 
-### 🛠 Prérequis
+### 🛠 Prérequis 
 
 - **Installer Python :** Assure-toi d'avoir [Python](https://www.python.org/downloads/) installé sur ton système.
   
@@ -15,9 +15,9 @@
     pip install paramiko requests aiopg uvicorn rapidjson
     ```
 
-###  Configuration de PostgreSQL
+##  ⚙️ Configuration 
 
-1. **Créer une base de données PostgreSQL** :
+### 1. Créer une base de données PostgreSQL :
    - Utilise psql ou pgAdmin pour exécuter ces commandes SQL et créer la base de données et l'utilisateur :
 
      ```sql
@@ -29,18 +29,18 @@
      GRANT ALL PRIVILEGES ON DATABASE mydatabase TO user;
      ```
 
-2. **Mettre à jour les informations de connexion dans le script** :
+### 2. Mettre à jour les informations de connexion dans le script 
    - Ouvre le script Python et mets à jour la variable `PG_CONFIG` :
 
      ```python
      PG_CONFIG = "host=localhost port=5432 dbname=mydatabase user=user password=password"
      ```
 
-### Configuration de Redis
+### 3. Installer et configurer Redis (si nécessaire) 
+   - Télécharge et installe Redis depuis le site officiel de Redis : https://redis.io/fr/
+   -  Démarre le serveur Redis.
 
-- **Installer et configurer Redis (si nécessaire)** : Télécharge et installe Redis depuis le site officiel de Redis. Démarre le serveur Redis.
-
-### Gestion des clés SSH
+### 4. Gestion des clés SSH
 
 - **Générer une paire de clés SSH** : Génère une paire de clés avec la commande :
 
@@ -48,17 +48,15 @@
     ssh-keygen -t rsa -f server.key
     ```
 
-### Build
+## 🚀 Run
 
-- **Construire l'image Docker** :
+- **Construire l'image Docker**
 
-    ```bash
+  ```bash
     docker build -t winnie .
     ```
 
-### 🚀 Run
-
-- **Lancer le conteneur Docker** :
+- **Lancer le conteneur Docker** 
 
     ```bash
     docker run -v ${PWD}:/usr/src/app -p 2222:2222 basic_honeypot
