@@ -2,7 +2,7 @@
 
 ### Honeypot SSH avec Téléchargement d'URL
 
-### Prérequis
+### 🛠 Prérequis
 
 - **Installer Python :** Assure-toi d'avoir [Python](https://www.python.org/downloads/) installé sur ton système.
   
@@ -15,7 +15,7 @@
     pip install paramiko requests aiopg uvicorn rapidjson
     ```
 
-### Configuration de PostgreSQL
+###  Configuration de PostgreSQL
 
 1. **Créer une base de données PostgreSQL** :
    - Utilise psql ou pgAdmin pour exécuter ces commandes SQL et créer la base de données et l'utilisateur :
@@ -56,7 +56,7 @@
     docker build -t winnie .
     ```
 
-### Run
+### 🚀 Run
 
 - **Lancer le conteneur Docker** :
 
